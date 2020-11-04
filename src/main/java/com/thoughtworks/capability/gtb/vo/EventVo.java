@@ -4,6 +4,8 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.thoughtworks.capability.gtb.entity.DateSerializer;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,7 +18,7 @@ public class EventVo {
   private String id;
   private String name;
   private EventType type;
-  @JsonFormat(pattern = "yyyy-MM-dd HH-mm-ss")
+  @JsonSerialize(using = DateSerializer.class)
   private Date time;
   @JsonUnwrapped
   private UserVo user;
